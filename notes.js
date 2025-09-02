@@ -21,3 +21,11 @@ const getAllNotes = () => {
         return [];
     } 
 }
+
+const getAllNotesAndRead = () => {
+    notes = getAllNotes();
+    console.log(chalk.inverse('See your notes below:'));
+    notes.map(note => {
+        console.log('Title: ' + note.title + ', Body: ' + note.body);
+    })
+}
