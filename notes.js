@@ -59,3 +59,12 @@ const getNote = (title) => {
         console.log(chalk.red("No one note was found with this title."));
     }
 }
+
+module.exports = {
+    addNote,
+    getAllNotes,
+    getAllNotesAndRead,
+    saveNotes,
+    removeNote,
+    getNote
+}
