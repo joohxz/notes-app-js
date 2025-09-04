@@ -6,6 +6,7 @@ const addNote = (title, body) => {
     const duplicateNote = notes.find((note) => {note.title == title})
     if(!duplicateNote) {
         notes.push({title, body});
+        saveNotes(notes);
         console.log(chalk.green('File added written sucessfully'))
     } else {
         console.log(chalk.red('Error: The title already exists in another note'))
@@ -33,4 +34,17 @@ const getAllNotesAndRead = () => {
 const saveNotes = (notes) => {
     const data = JSON.stringify(notes);
     fs.writeFileSync(notes.JSON, data);
+
+    console.log(chalk.green("Notes were sucessfully saved!"));
 }; 
+
+const removeNote = (title) => {
+    const notes = getAllNotes;
+    const notesWithoutTitle = notes.find(note => note.title !== title);
+
+    if(notes > notesWithoutTitle){
+        console.log(chalk.green("Note removed!"));
+    } else {
+        console.log(chalk.red("No one note was found with this title."));
+    }
+}
