@@ -10,7 +10,7 @@ const addNote = (title, body) => {
     } else {
         console.log(chalk.red('Error: The title already exists in another note'))
     }
-}
+};
 
 const getAllNotes = () => {
     try {
@@ -20,7 +20,7 @@ const getAllNotes = () => {
     } catch (error) {
         return [];
     } 
-}
+};
 
 const getAllNotesAndRead = () => {
     notes = getAllNotes();
@@ -28,4 +28,9 @@ const getAllNotesAndRead = () => {
     notes.map(note => {
         console.log('Title: ' + note.title + ', Body: ' + note.body);
     })
-}
+};
+
+const saveNotes = (notes) => {
+    const data = JSON.stringify(notes);
+    fs.writeFileSync(notes.JSON, data);
+}; 
