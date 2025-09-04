@@ -45,6 +45,17 @@ const removeNote = (title) => {
     if(notes > notesWithoutTitle){
         console.log(chalk.green("Note removed!"));
     } else {
+        console.log(chalk.red("No one note was found with this title to remove."));
+    }
+}
+
+const getNote = (title) => {
+    const notes = getAllNotes;
+    const note = notes.find(note => note.title == title);
+
+    if(note){
+        console.log(chalk.green(note))
+    } else {
         console.log(chalk.red("No one note was found with this title."));
     }
 }
