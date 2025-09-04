@@ -1,10 +1,10 @@
 const chalk = require('chalk');
 const yargs = require('yargs');
 const notes = require('./notes')
+const { hideBin } = require('yargs/helpers');
 
-yargs.version('1.0.0');
 
-yargs.command({
+yargs(hideBin(process.argv)).command({
     command: 'add',
     describe: 'Add a new note',
     builder: {
@@ -22,9 +22,9 @@ yargs.command({
     handler(argv) {
         notes.addNote(argv.title, argv.body);
     }
-});
+}).parse();
 
-yargs.command({
+yargs(hideBin(process.argv)).command({
     command: 'remove',
     describe: 'Remove a note',
     builder: {
@@ -37,17 +37,17 @@ yargs.command({
     handler(argv) {
         notes.removeNote(argv.title);
     }
-});
+}).parse();
 
-yargs.command({
+yargs(hideBin(process.argv)).command({
     command: 'getAll',
     describe: 'List all notes',
     handler() {
         notes.getAllNotesAndRead();
     }
-});
+}).parse();
 
-yargs.command({
+yargs(hideBin(process.argv)).command({
     command: 'get',
     describe: 'Read a note',
     builder: {
@@ -60,6 +60,4 @@ yargs.command({
     handler(argv) {
         notes.readNote(argv.title);
     }
-});
-
-yargs.parse();
+}).parse();
